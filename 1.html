@@ -1,0 +1,193 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
+import { Progress } from "@/components/ui/progress"
+import { Separator } from "@/components/ui/separator"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import {
+  BriefcaseBusiness,
+  Calendar,
+  CheckCircle2,
+  Code2,
+  Github,
+  Mail,
+  MessageSquare,
+  Server,
+  Terminal,
+  Users,
+} from "lucide-react"
+
+export default function DevProfileCard() {
+  return (
+    <Card className="w-full max-w-md border-2">
+      <CardHeader className="pb-2">
+        <div className="flex justify-between items-start">
+          <div className="flex gap-4">
+            <Avatar className="h-16 w-16 border-2 border-primary">
+              <AvatarImage src="/placeholder.svg?height=64&width=64" alt="Alex Chen" />
+              <AvatarFallback>AC</AvatarFallback>
+            </Avatar>
+            <div>
+              <h3 className="text-xl font-bold flex items-center gap-2">
+                Alex Chen
+                <Badge variant="outline" className="ml-2 bg-green-50 text-green-700 border-green-200">
+                  <CheckCircle2 className="h-3 w-3 mr-1 fill-green-500" />
+                  Available
+                </Badge>
+              </h3>
+              <p className="text-sm text-muted-foreground">Senior DevOps Engineer</p>
+              <div className="flex items-center gap-2 mt-1">
+                <Badge variant="secondary" className="text-xs">
+                  Team Lead
+                </Badge>
+                <Badge variant="outline" className="text-xs">
+                  Cloud Infrastructure
+                </Badge>
+              </div>
+            </div>
+          </div>
+        </div>
+      </CardHeader>
+      <CardContent className="pb-3">
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 text-sm">
+            <Users className="h-4 w-4 text-muted-foreground" />
+            <span className="text-muted-foreground">Platform Team</span>
+            <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">8 members</span>
+          </div>
+
+          <div className="flex items-center gap-2 text-sm">
+            <BriefcaseBusiness className="h-4 w-4 text-muted-foreground" />
+            <span className="text-muted-foreground">Projects:</span>
+            <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">12 active</span>
+          </div>
+
+          <div className="flex items-center gap-2 text-sm">
+            <Calendar className="h-4 w-4 text-muted-foreground" />
+            <span className="text-muted-foreground">Joined:</span>
+            <span>March 2022</span>
+          </div>
+
+          <Separator />
+
+          <div>
+            <h4 className="text-sm font-medium mb-2">Skills & Expertise</h4>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-1">
+                <div className="flex justify-between text-sm">
+                  <div className="flex items-center">
+                    <Server className="h-3 w-3 mr-1" />
+                    <span>Kubernetes</span>
+                  </div>
+                  <span className="text-xs text-muted-foreground">Expert</span>
+                </div>
+                <Progress value={95} className="h-1.5" />
+              </div>
+
+              <div className="space-y-1">
+                <div className="flex justify-between text-sm">
+                  <div className="flex items-center">
+                    <Terminal className="h-3 w-3 mr-1" />
+                    <span>CI/CD</span>
+                  </div>
+                  <span className="text-xs text-muted-foreground">Expert</span>
+                </div>
+                <Progress value={90} className="h-1.5" />
+              </div>
+
+              <div className="space-y-1">
+                <div className="flex justify-between text-sm">
+                  <div className="flex items-center">
+                    <Code2 className="h-3 w-3 mr-1" />
+                    <span>Terraform</span>
+                  </div>
+                  <span className="text-xs text-muted-foreground">Advanced</span>
+                </div>
+                <Progress value={85} className="h-1.5" />
+              </div>
+
+              <div className="space-y-1">
+                <div className="flex justify-between text-sm">
+                  <div className="flex items-center">
+                    <Server className="h-3 w-3 mr-1" />
+                    <span>AWS</span>
+                  </div>
+                  <span className="text-xs text-muted-foreground">Advanced</span>
+                </div>
+                <Progress value={80} className="h-1.5" />
+              </div>
+            </div>
+          </div>
+
+          <Separator />
+
+          <div>
+            <h4 className="text-sm font-medium mb-2">Recent Activity</h4>
+            <div className="space-y-2 text-sm">
+              <div className="flex items-start gap-2">
+                <div className="bg-primary/10 p-1 rounded-full mt-0.5">
+                  <CheckCircle2 className="h-3 w-3 text-primary" />
+                </div>
+                <div>
+                  <p>Deployed infrastructure updates to production</p>
+                  <p className="text-xs text-muted-foreground">2 hours ago</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-2">
+                <div className="bg-primary/10 p-1 rounded-full mt-0.5">
+                  <MessageSquare className="h-3 w-3 text-primary" />
+                </div>
+                <div>
+                  <p>Resolved 3 support tickets for API gateway issues</p>
+                  <p className="text-xs text-muted-foreground">Yesterday</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </CardContent>
+      <CardFooter className="flex justify-between border-t pt-4">
+        <TooltipProvider>
+          <div className="flex gap-2">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Mail className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Send Email</p>
+              </TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <MessageSquare className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Send Message</p>
+              </TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Github className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>View GitHub</p>
+              </TooltipContent>
+            </Tooltip>
+          </div>
+        </TooltipProvider>
+
+        <Button>View Full Profile</Button>
+      </CardFooter>
+    </Card>
+  )
+}
+
